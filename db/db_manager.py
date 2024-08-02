@@ -3,7 +3,8 @@ import sqlite3
 
 def create_db(db_path='db/concerts.db'):
     """
-    Создает таблицу concerts в базе данных SQLite, если она не существует.
+    Функция создает таблицу concerts в базе данных
+    SQLite, если она не существует.
     """
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
@@ -23,16 +24,41 @@ def create_db(db_path='db/concerts.db'):
 
 def save_to_db(concerts, db_path='db/concerts.db'):
     """
-    Сохраняет список концертов в базу данных SQLite.
+    Функция сохраняет список концертов в базу данных.
     """
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
     for concert in concerts:
         cursor.execute('''
-        INSERT INTO concerts (title, date, location)
-        VALUES (?, ?, ?)
+        SELECT COUNT(*)
+        FROM concerts
+        WHERE title = ? AND date = ? AND location = ?
         ''', (concert['title'], concert['date'], concert['location']))
+        if cursor.fetchone()[0] == 0:
+            cursor.execute('''
+            INSERT INTO concerts (title, date, location)
+            VALUES (?, ?, ?)
+            ''', (concert['title'], concert['date'], concert['location']))
 
     conn.commit()
     conn.close()
+
+
+def get_last_12_concerts(db_path='db/concerts.db'):
+    """
+    Функция возвращает последние 12 концертов из базы данных.
+    """
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    cursor.execute('''
+    SELECT id, title, date, location
+    FROM concerts
+    ORDER BY id DESC
+    LIMIT 12
+    ''')
+
+    concerts = cursor.fetchall()
+    conn.close()
+    return concerts[::-1]

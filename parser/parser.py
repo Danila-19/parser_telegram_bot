@@ -1,15 +1,14 @@
 import requests
-
 from bs4 import BeautifulSoup
 
 
-def parsing_concerts():
+def parsing_concerts() -> dict:
     """
     Функция для извлечения данных о концертах с веб-страницы.
     """
     filtered_concerts = []
     url = 'https://afisha.yandex.ru/moscow/selections/hot'
-    # Загружаем страницу
+
     page = requests.get(url)
     if page.status_code != 200:
         raise RuntimeError(f'Ошибка загрузки страницы: {page.status_code}')
@@ -23,9 +22,7 @@ def parsing_concerts():
         raise ValueError('Не удалось найти ни одного блока концертов.')
 
     for items in all_concerts:
-        # Извлекаем название
         title = items.find('h2', class_='Title-fq4hbj-3 hponhw')
-        # Извлекаем дату и место проведения
         details = items.find('ul', class_='Details-fq4hbj-0 jznoEj')
         date = (
             details.find_all(
@@ -40,7 +37,7 @@ def parsing_concerts():
             else None
         )
 
-        # Проверяем, что все элементы найдены
+        # Проверяем, что все найдено
         if title and date and location:
             concert_info = {
                 'title': title.text.strip(),

@@ -1,3 +1,6 @@
 beautifulsoup4
 requests
 bs4
+aiogram
+isort
+black
