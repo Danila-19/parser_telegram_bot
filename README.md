@@ -100,7 +100,7 @@
 
 ```bash
 python -m unittest --v
-
+```
 # Результаты
 
 ![Тестирование](media/testing.png)
