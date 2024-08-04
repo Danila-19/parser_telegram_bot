@@ -48,43 +48,51 @@
 ## Запуск проекта
 
 1. **Настройка виртуального окружения:**
-    -python -m venv venv
-    -source venv/bin/activate #Для Unix
-    -source venv/Scripts/activate # Для Windows
+    ```bash
+    python -m venv venv
+    source venv/bin/activate #Для Unix
+    source venv/Scripts/activate # Для Windows
 
 2. **Установка зависимостей:**
-    - pip install -r requirements.txt
+    ```bash
+    pip install -r requirements.txt
 
 3. **Настройка переменных окружения:**
     -Создайте файл .env в корне проекта и добавьте следующие переменные:
         -TELEGRAM_TOKEN=your_telegram_bot_token
 
 4. **Запуск парсинга и создание базы данных:**
-    -python main.py
+    ```bash
+    python main.py
 
 5. **Запуск бота:**
-    -python bot.py
+    ```bash
+    python bot.py
 
 
-## CRUD Операции
+# CRUD Операции
 
-# Создание нового концерта:
-- python crud_operations.py create --title 'Баста' --date '13 сентября' --location 'VK Gipsy'
+## Создание нового концерта:
+    ```bash
+    python crud_operations.py create --title 'Баста' --date '13 сентября' --location 'VK Gipsy'
 
-# Чтение всех концертов:
-- python crud_operations.py read
+## Чтение всех концертов:
+    ```bash
+    python crud_operations.py read
 
-# Обновление концерта:
-- python crud_operations.py update --id 21 --title 'Обновленный концерт' --date '10 августа' --location 'Лужники'
+## Обновление концерта:
+    ```bash
+    python crud_operations.py update --id 21 --title 'Обновленный концерт' --date '10 августа' --location 'Лужники'
 
-# Удаление концерта:
-- python crud_operations.py delete --id <id концерта>
+## Удаление концерта:
+    ```bash
+    python crud_operations.py delete --id <id концерта>
 
 
-## Тестирование
+# Тестирование
 Тестирование включает проверку функциональности парсинга, работы с базой данных.
-
-- python -m unittest --v
+    ```bash
+    python -m unittest --v
 
 # Результаты
 
@@ -92,7 +100,7 @@
 
 - бот протестирован в ручную
 
-## Результаты работы
+# Результаты работы
 
 1. **Создал проект и настроил виртуальное окружение.**
 
