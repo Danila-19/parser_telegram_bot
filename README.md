@@ -59,7 +59,8 @@
 
 3. **Настройка переменных окружения:**
     -Создайте файл .env в корне проекта и добавьте следующие переменные:
-        -TELEGRAM_TOKEN=your_telegram_bot_token
+    ```bash
+    TELEGRAM_TOKEN=your_telegram_bot_token
 
 4. **Запуск парсинга и создание базы данных:**
     ```bash
