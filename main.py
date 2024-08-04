@@ -3,6 +3,7 @@ from parser_12.parser_12 import parsing_concerts
 
 
 def main() -> None:
+
     try:
         # Создаём базу данных и таблицу
         create_db()
@@ -18,3 +19,5 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
+
+'''также можно сделать, чтобы он запускал парсинг раз в сутки'''
