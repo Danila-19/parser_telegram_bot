@@ -4,3 +4,4 @@ bs4
 aiogram
 isort
 black
+python-dotenv

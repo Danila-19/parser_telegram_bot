@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import os
 import sqlite3
 
 from aiogram import Bot, Dispatcher, html, types
@@ -8,11 +9,15 @@ from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.filters.command import Command, CommandObject
 from aiogram.types import Message
+from dotenv import load_dotenv
 
 from db.db_manager import get_last_12_concerts
 
+load_dotenv()
+
 logging.basicConfig(level=logging.INFO)
-token = '7110758526:AAF9fcSMwP-NExpu3Z9hF4NL6n4BupBlcqk'
+
+token = os.getenv('TOKEN')
 bot = Bot(
     token=token,
     default=DefaultBotProperties(parse_mode=ParseMode.HTML)
@@ -26,9 +31,13 @@ async def command_start_handler(message: Message) -> None:
     Функция получает сообщения с командой '/start'.
     """
     await message.answer(
-        f'Привет, {html.bold(message.from_user.full_name)}!\n'
+        f'Привет, {html.bold(message.from_user.full_name)}!\n\n'
         f'Этот бот предназначен для просмотра\n'
-        f'самых ожидаемых концертов в Москве.'
+        f'самых ожидаемых концертов в Москве.\n\n'
+        f'Доступные команды:\n\n'
+        f'/start Запуск бота\n'
+        f'/latest Вывод самых ожидаемых концертов в Москве\n'
+        f'/search Исполнитель Поиск концертов по исполнителю'
         )
 
 

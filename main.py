@@ -1,5 +1,5 @@
-from parser.parser import parsing_concerts
 from db.db_manager import create_db, save_to_db
+from parser_12.parser_12 import parsing_concerts
 
 
 def main() -> None:
@@ -16,5 +16,5 @@ def main() -> None:
         raise RuntimeError(f'Произошла ошибка: {e}')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
