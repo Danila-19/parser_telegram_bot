@@ -37,7 +37,7 @@ async def command_start_handler(message: Message) -> None:
         f'Доступные команды:\n\n'
         f'/start Запуск бота\n'
         f'/latest Вывод самых ожидаемых концертов в Москве\n'
-        f'/search Исполнитель Поиск концертов по исполнителю'
+        f'/search Исполнитель поиск концертов по исполнителю'
         )
 
 
@@ -63,6 +63,9 @@ async def search_concert(message: types.Message,
                          command: CommandObject):
     """
     Функция получает сообщения с командой '/search + <ключевое слово>'.
+    Это mvp проекта пока не доработал обработку даты,
+    потому что она пишется по разному на этом сайте,
+    и чтобы выдачу не актуальных не выдавал
     """
     args = command.args
     db_path = 'db/concerts.db'
